@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Example</title>
+    <style>
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search on this page</h1>
+    <input type="text" id="searchBox" placeholder="Search...">
+    <button onclick="searchText()">Search</button>
+
+    <div id="content">
+        <p>HTML stands for HyperText Markup Language.</p>
+        <p>CSS stands for Cascading Style Sheets.</p>
+        <p>JavaScript is a programming language used in web development.</p>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function searchText() {
+            const searchTerm = document.getElementById("searchBox").value.toLowerCase();
+            const paragraphs = document.querySelectorAll("#content p");
+            let result = "No results found.";
+            
+            paragraphs.forEach(function(paragraph) {
+                if (paragraph.textContent.toLowerCase().includes(searchTerm)) {
+                    result = "Found: " + paragraph.textContent;
+                }
+            });
+            
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
